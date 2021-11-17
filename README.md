@@ -1,5 +1,5 @@
 # Entwicklung-anthropomorpher-Maschinen-Systeme
-Pepper QiSDK - information desk Application with the Cologne Centralsation as location 
+Pepper QiSDK - information desk application with the Cologne Centralsation as location 
 ---
 ## Disklamer
 
@@ -24,7 +24,7 @@ The project is done since 05.2021.
 @misc{EAM,
   author = "Jan Teigelkötter"
   title = "Entwicklung Anthropomorphe Maschinen - Einsatz von Pepper als Informationssystem am Kölner Hauptbahnhof",
-  year = 2015,
+  year = 2021,
   url = "https://github.com/jan-tgk/Entwicklung-anthropomorpher-Maschinen-Systeme"
 }
 ```
