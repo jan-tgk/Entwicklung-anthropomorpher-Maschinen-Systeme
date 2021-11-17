@@ -1,0 +1,13 @@
+topic: ~mainactivity()
+
+concept:(reiseauskunft) [Reiseauskunft "Kannst du mir eine Reiseauskunft geben?" "Ich brauche eine Auskunft zu einer Reise"]
+concept:(ortsauskunft) [Ortsaufkunft "Ich suche hier etwas" "Ich brauche eine Wegbeschreibung" "Kannst du mir eine Ortsauskunft geben?" "Ich möchte noch etwas für die Reise kaufen"]
+concept:(small_talk) ["Small Talk" "Lass uns reden" "Ich möchte nur ein bisschen reden" "reden"]
+concept:(reiseplanung) [Reiseplanung "Ich möchte eine Reise planen" "Ich möchte verreisen" "Kannst du mir helfen eine Reise zu planen?"]
+concept:(end_conversation) [Stop "Ich brauche keine Hilfe mehr" "Das reicht mir" "Vielen Danke für die Hilfe" "auf Wiedersehen" ciao tschüss]
+
+u:(~reiseauskunft) Was möchten Sie über Ihre Reise wissen? %start_reiseauskunft
+u:(~ortsauskunft) Welche Ortsauskunft benötigen Sie? %start_ortsauskunft
+u:(~small_talk) Worüber möchten Sie reden? %start_smalltalk
+u:(~reiseplanung) Ok,lassen Sie uns Ihre Reise planen! %start_reiseplanung
+u:(~end_conversation) Ich hoffe ich konnte Ihnen helfen. %start_startscreen

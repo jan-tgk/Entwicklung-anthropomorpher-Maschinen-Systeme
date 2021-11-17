@@ -1,0 +1,63 @@
+topic: ~small_talk()
+#Small Talk
+concept:(hello) [Hallo Hi Hey Moin "Guten [Morgen Mittag Abend Tag]"]
+
+u:( ~hello Pepper)
+    ~hello Mensch! %greet_animation
+
+
+u:(Wo geht es zum Kölner Dom?)
+Zum Kölner Dom geht es in diese Richtung %right_animation
+
+u:(Stadtplan)
+Hier ist ein Plan der Stadt ! %show_stadtplan
+
+
+u:(Mein Name ist _*)
+$name=$1
+    Schön mit dir zusprech $name !
+
+u:(Erzähl mir etwas)
+$asked=1
+^rand[
+    "Der Kölner Bahnhof hat 9 Gleise und 2 S-Bahn Gleise"
+    "Am Kölner Bahnhof reisen täglich 318000 Menschen und ist damit einer der meistfrequentierten Fernbahnhöfe in Deutschland"
+    "Die Reisezeit von Köln nach Berlin Beträgt 4 Stunden und 20 Minuten"
+    ]
+u:(Was weist du über mich?)
+^first[
+    "$asked==1 Dein Name ist $name und ich hab dir schon einen Fakt erzählt!"
+    "Dein Name ist $name!"
+    "Ich weiß leider nichts über dich."
+    ]
+u:(Mir ist langweilig)
+Möchtest du einen Zungenbrecher lernen?
+    u1:(Ja)
+    Alles klar, los gehts!
+    ^enableThenGoto(Zungenbrecher)
+    u1:(Nein)
+    Kein Problem!
+
+proposal: %Zungenbrecher
+Sprich mir nach acht alte Ameisen aßen am Abend Ananas.
+        u1:(Acht alte Ameisen aßen am Abend Ananas)
+        Wow, das war wirklich gut!
+        u1:(Ich gebe auf)
+        Oh schade nächstes mal schaffst du es!
+        u1:(*)
+        ["Das war nicht richtig. Probier es nocheinmal! ^stayInScope"
+        "Ok du bekommst noch einen Versuch! ^stayInScope"
+        "Du wirst es beim nächstenmal vielleicht schaffen!"]
+
+concept:(reiseauskunft) [Reiseauskunft "Kannst du mir eine Reiseauskunft geben?" "Ich brauche eine Auskunft zu einer Reise"]
+concept:(ortsauskunft) [Ortsaufkunft "Ich suche hier etwas" "Ich brauche eine Wegbeschreibung" "Kannst du mir eine Ortsauskunft geben?" "Ich möchte noch etwas für die Reise kaufen"]
+concept:(small_talk) ["Small Talk" "Lass uns reden" "Ich möchte nur ein bisschen reden" "reden"]
+concept:(reiseplanung) [Reiseplanung "Ich möchte eine Reiseplanen" "Ich möchte verreisen" "Kannst du mir helfen eine Reise zu planen?"]
+concept:(end_conversation) [Stop "Ich brauche keine Hilfe mehr" "Das reicht mir" "Vielen Danke für die Hilfe" "auf Wiedersehen" ciao tschüss]
+
+u:(~reiseauskunft) Was möchten Sie über Ihre Reise wissen? %start_reiseauskunft
+u:(~ortsauskunft) Welche Ortsauskunft benötigen Sie? %start_ortsauskunft
+u:(~small_talk) Worüber möchten Sie reden? %start_smalltalk
+u:(~reiseplanung) Ok,lassen Sie uns Ihre Reise planen! %start_reiseplanung
+
+u:(~end_conversation) Ich hoffe ich konnte helfen %start_startscreen

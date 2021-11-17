@@ -1,0 +1,13 @@
+topic: ~start_screen()
+concept:(greeting) [Hallo Hi Hey Moin "Guten [Morgen Mittag Abend Tag]"]
+concept:(ConversationStarter) [Entschuldigung Ja Sorry Ok start]
+
+u:( ~greeting "*")
+    Hallo, ich kann Ihnen mit ihrer Reiseplanung helfen oder Ihnen Auskünfte zur Reise und über diesen Ort geben. Small Talk ist auch möglich. Was möchten Sie tun? %start_MainActivity
+u:( ~greeting)
+    Hallo, ich kann Ihnen mit ihrer Reiseplanung helfen oder Ihnen Auskünfte zur Reise und über diesen Ort geben. Small Talk ist auch möglich. Was möchten Sie tun?  %start_MainActivity
+u:("*")
+    Ok. Ich kann Ihnen mit ihrer Reiseplanung helfen oder Ihnen Auskünfte zur Reise und über diesen Ort geben. Small Talk ist auch möglich. Was möchten Sie tun? %start_MainActivity
+u:(~ConversationStarter)
+   Ich kann Ihnen mit ihrer Reiseplanung helfen oder Ihnen Auskünfte zur Reise und über diesen Ort geben. Small Talk ist auch möglich. Was möchten Sie tun? %start_MainActivity
+

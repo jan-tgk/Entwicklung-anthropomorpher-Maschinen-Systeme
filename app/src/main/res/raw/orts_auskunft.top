@@ -1,0 +1,60 @@
+topic: ~orts_auskunft()
+
+u:(Ich möchte noch ein Rätselheft kaufen.)
+    Rätselhefte bekommen Sie im Kölner Hauptbahnhof in zwei Geschäften. Das nächste ist Rossmann. Dieser befindet sich dem Gang hinter mir folgend auf der linken Seite. %show_left
+    Das andere Geschäft ist Presse und Buch, möchten Sie den Weg dorthin auch wissen?
+    u1:(Nein)
+       Kann ich Ihnen mit noch etwas weiterhelfen?
+
+ Replying to speech
+u:(Ich suche eine Toilette)
+^rand[
+    "Die nächste Toilette ist direkt um die Ecke, neben dem Aufgang zu Gleis 3."
+    "Wie du auf der Karte auf dem Display siehst ist die nächste Toilette direkt neben dem Aufgang zu Gleis 3."
+    ]
+    u1:(Ist die Toilette barrierefrei?)
+        Alle Toiletten am Kölner Hauptbahnhof sind barrierefrei.
+
+u:(Ich möchte gerne _* essen)
+    $Essenswunsch=$1
+    ^first[
+    "$Essenswunsch==Burger Wie wäre es mit einem Burger von McDonalds."
+    "$Essenswunsch==Brötchen Belegte Brötchen und andere Backspezialitäten findest du bei Kamps."
+    "$Essenswunsch==Pizza Da können dir sicherlich die freundlichen Mitarbeiter von Pizza Hut helfen."
+    ]Den Weg dahin siehst du auf meinem Display. Guten Appetit!
+
+u:(Ich habe hunger)
+    Suchst du etwas spezielles oder willst du eine Empfehlung von mir haben?
+
+    u1:(Was kannst du mir empfehlen?)
+        Ich kann dir
+        ^rand[
+            "lecker belegte Brötchen von der Bäckerei Kamps"
+            "ein erfrischenden Smoothie von Green Smash"
+            "kühles Eis von Giovannis"
+            ]
+        empfehlen. Hat dir dies weiter geholfen?
+        u2:(Ja)
+        Super. Den Weg findest du auf meinem Bildschirm.
+        u2:(Nein)
+        Das ist Schade. Was möchstest du denn gerne essen?
+u:(Ich glaube ich habe Corona)
+    Dann solltest du dich schnell mal testen lassen. Soll ich dir den Weg zum nächsten Testzentrum sagen?
+    u1:(Ja)
+    Das nächste Testzentrum ist auf dem Breslauer PLatz neben dem Taxistand.
+    u1:(Nein)
+    Dann gehe schnell nach Hause und stecke mich nicht an!
+
+
+concept:(reiseauskunft) [Reiseauskunft "Kannst du mir eine Reiseauskunft geben?" "Ich brauche eine Auskunft zu einer Reise"]
+concept:(ortsauskunft) [Ortsaufkunft "Ich suche hier etwas" "Ich brauche eine Wegbeschreibung" "Kannst du mir eine Ortsauskunft geben?"]
+concept:(small_talk) ["Small Talk" "Lass uns reden" "Ich möchte nur ein bisschen reden" "reden"]
+concept:(reiseplanung) [Reiseplanung "Ich möchte eine Reiseplanen" "Ich möchte verreisen" "Kannst du mir helfen eine Reise zu planen"]
+concept:(end_conversation) [Stop "Ich brauche keine Hilfe mehr" "Das reicht mir" "Vielen Danke für die Hilfe" "auf Wiedersehen" ciao tschüss]
+
+u:(~reiseauskunft) Was möchten Sie über Ihre Reise wissen? %start_reiseauskunft
+u:(~ortsauskunft) Welche Ortsauskunft benötigen Sie? %start_ortsauskunft
+u:(~small_talk) Worüber möchten Sie reden? %start_smalltalk
+u:(~reiseplanung) Ok,lassen Sie uns Ihre Reise planen! %start_reiseplanung
+
+u:(~end_conversation) Ich hoffe ich konnte helfen %start_startscreen

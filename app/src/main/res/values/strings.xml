@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">EAM_v1</string>
+    <string name="textView_StartScreen">Guten Tag! Mein Name ist Pepper. Ich kann Ihnen helfen!</string>
+
+    <string name="button_ReiseAuskunft">Reise Auskunft</string>
+    <string name="button_OrtsAuskunft">Ortsauskunft</string>
+    <string name="button_SmallTalk">Small Talk</string>
+    <string name="button_Reiseplanung">Reiseplanung</string>
+
+    <string name="button_StartScreen">Start</string>
+    <string name="button_back">Zurück</string>
+    <string name="button_exit">Exit</string>
+
+    <string name="projekt">Projektarbeit in Entwicklung Antropomorpher Maschinen </string>
+    <string name="Wael">Wael Karyakos</string>
+    <string name="Lars">Lars Nagorski</string>
+    <string name="Jan">Jan Teigelkötter</string>
+    <string name="Johannes">Johannes Wilpert</string>
+
+</resources>

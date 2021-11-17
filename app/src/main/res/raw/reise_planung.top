@@ -1,0 +1,31 @@
+topic: ~reise_planung()
+
+
+u:(Ich möchte nach _* reisen. Wann fährt der nächste Zug?)
+    $Zielort=$1
+    Der nächste Zug nach $Zielort fährt um  13 Uhr 56. Passt Ihnen das oder wollen Sie später fahren?
+    u1:(Wann kommt dieser Zug an?)
+        Um 18 Uhr 24 kommt der Zug in $Zielort an.
+        u2:(Den Zug nehme ich. Kann ich das Ticket direkt hier kaufen?)
+            Das Ticket können Sie am Automaten neben mir %right_animation oder im Reisezentrum kaufen.
+            u3:(Wie komme ich zum Reisezentrum?)
+                %left_animation %show_reisezentrum Gehen Sie links und folgen der Bahnhofshalle, dann befindet sich das Reisezentrum auf der rechten Seite.
+
+
+
+
+concept:(reiseauskunft) [Reiseauskunft "Kannst du mir eine Reiseauskunft geben?" "Ich brauche eine Auskunft zu einer Reise"]
+concept:(ortsauskunft) [Ortsaufkunft "Ich suche hier etwas" "Ich brauche eine Wegbeschreibung" "Kannst du mir eine Ortsauskunft geben?" "Ich möchte noch etwas für die Reise kaufen"]
+concept:(small_talk) ["Small Talk" "Lass uns reden" "Ich möchte nur ein bisschen reden" "reden"]
+concept:(reiseplanung) [Reiseplanung "Ich möchte eine Reiseplanen" "Ich möchte verreisen" "Kannst du mir helfen eine Reise zu planen?"]
+concept:(end_conversation) [Stop "Ich brauche keine Hilfe mehr" "Das reicht mir" "Vielen Danke für die Hilfe" "auf Wiedersehen" ciao tschüss]
+
+u:(~reiseauskunft) Was möchten Sie über Ihre Reise wissen? %start_reiseauskunft
+u:(~ortsauskunft) Welche Ortsauskunft benötigen Sie? %start_ortsauskunft
+u:(~small_talk) Worüber möchten Sie reden? %start_smalltalk
+u:(~reiseplanung) Ok,lassen Sie uns Ihre Reise planen! %start_reiseplanung
+
+
+
+u:(~end_conversation) Ich hoffe ich konnte helfen %start_startscreen
+

@@ -1,0 +1,83 @@
+topic: ~reise_auskunft()
+#Reise Auskunft
+
+u:(Wo fährt mein Zug nachher?)
+    Welchen Zug meinen Sie?
+    u1:(Der _* nach _*.)
+    $ZugNummer=$1
+    $ZielOrt=$2
+    Der $ZugNummer nach $ZielOrt fährt auf Gleis 4!
+        u2:(Gibt es einen Aufzug zu diesem Gleis?)
+            %show_passage_b Ja, die Aufzüge zu allen Gleisen befinden sich in der Passage B.
+
+
+
+u:(Wann fährt [der mein] [Zug ICE RE] _* nach _*)
+$ZugNummer=$1
+$ZielOrt=$2
+    Der Zug $ZugNummer nach $ZielOrt fährt um 14 Uhr 18 nach Plan aber hat 5 Minuten verspätung !
+
+    u1:([An Von] welchem Gleis fährt der Zug)
+        Der Zug nach $ZielOrt fährt auf Gleis 3 !
+
+        u2:(Gibt es dort einen Aufzug?)
+            Ja zu Gleis 3 gibt es einen Aufzug.
+u:(Da hab ich noch viel Zeit)
+    Dann schau dir doch den Kölner Dom an !
+
+
+
+
+    u:(Oh,ich habe meinen Zug verpasst!)
+    Willst du wissen, welche aktuelle Alternativen vorhanden sind?
+    u1:(Ja, bitte)
+    Der nächste Zug nach $ZielOrt fährt um 15 Uhr auf Gleis 6!
+
+    u:(Was sind meine Fahrgastrechte?)
+    Bei Fahrgastrechten handelt es sich um Ansprüche wegen Verspätung oder Ausfall von Zügen.
+    Fahrgastrechte gelten einheitlich im Eisenbahnverkehr in Deutschland und in Europa und räumen
+    den Reisenden gleiche Rechte bei allen Eisenbahnunternehmen ein.
+
+    u:( MeinZug ist ausgefallen. Bekomme ich mein Geld zurück?)
+    Gemäß unserer Beförderungsbedingungen können Fahrgäste Erstattungsansprüche bei den gesetzlichen
+    Fahrgastrecht engeltend machen.
+
+
+    u:(Darf ich mit meinem Ticket mit dem [BusTaxi] weiterfahren?)
+    Ja, nur bei einer planmäßigen Ankunftszeit zwischen 0 und 5Uhr und einer zu erwartenden
+    Verspätung von mind. 60 Minuten am Zielbahnhof oder bei Ausfall eines Zuges, wenn es sich dabei
+    um die letzte fahrplanmäßige Verbindung des Tages handelt und der Zielbahnhof ohne Nutzung eines
+    anderen Verkehrsmittels nicht mehr bis um 24Uhr erreicht werden kann.
+
+    u:(Was muss ich bei der Kontrolle im Zug vorzeigen?)
+    Sie müssen bei der Kontrolle Ihr Ticket sowie ein offizielles Ausweisdokument vorzeigen.
+
+    u:(Die Akku meines Handys ist leer, kannst du mir die Abfahrtszeiten der Verbindungen nach Berlin
+    sagen?)
+    Möchtest du die Abfahrtzeiten von unserem ICE66 nach Berlin wissen?
+        u1:(Ja)
+        ^enableThenGoto(AnreiseNachBerlin)
+        u1:(Nein)
+        Kein Problem!
+        proposal:%AnreiseNachBerlin
+        Der ICE66 nach Berlin fährt heute um 18 Uhr auf Gleis 7
+        u1:(gibt es eine Alternative erst nach 20 Uhr?)
+        Ja,um 20 Uhr 24 auf Gleis 5
+
+        u1:(*)
+        ["Gute Reise!^stayInScope"
+        "Schönen Tag noch!^stayInScope"]
+
+concept:(reiseauskunft) [Reiseauskunft "Kannst du mir eine Reiseauskunft geben" "Ich brauche eine Auskunft zu einer Reise?"]
+concept:(ortsauskunft) [Ortsaufkunft "Ich suche hier etwas" "Ich brauche eine Wegbeschreibung" "Kannst du mir eine Ortsauskunft geben?" "Ich möchte noch etwas für die Reise kaufen"]
+concept:(small_talk) ["Small Talk" "Lass uns reden" "Ich möchte nur ein bisschen reden" "reden"]
+concept:(reiseplanung) [Reiseplanung "Ich möchte eine Reiseplanen" "Ich möchte verreisen" "Kannst du mir helfen eine Reise zu planen?"]
+concept:(end_conversation) [Stop "Ich brauche keine Hilfe mehr" "Das reicht mir" "Vielen Danke für die Hilfe" "auf Wiedersehen" ciao tschüss]
+
+u:(~reiseauskunft) Was möchten Sie über Ihre Reise wissen? %start_reiseauskunft
+u:(~ortsauskunft) Welche Ortsauskunft benötigen Sie? %start_ortsauskunft
+u:(~small_talk) Worüber möchten Sie reden? %start_smalltalk
+u:(~reiseplanung) Ok,lassen Sie uns Ihre Reise planen! %start_reiseplanung
+
+
+u:(~end_conversation) Ich hoffe ich konnte helfen %start_startscreen
